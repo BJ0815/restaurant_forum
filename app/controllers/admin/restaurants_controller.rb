@@ -6,5 +6,28 @@ class Admin::RestaurantsController < ApplicationController
     @restaurants = Restaurant.all
   end
 
+  def new
+    @restaurant = Restaurant.new
+  end
+
+  def create
+    @restaurant = Restaurant.new(restaurant_params)
+    if @restaurant.save
+      redirect_to admin_restaurants_path
+      flash[:notice] = "Restaurant is successfully created"
+    else
+      render :new
+      flash[:alert] = "Restaurant is failed created"
+    end
+  end
+
+
+  private
+
+  def restaurant_params
+    params.require(:restaurant).permit(:name, :tel, :address, :opening_hours, :description)
+  end
+  
+
 
 end
