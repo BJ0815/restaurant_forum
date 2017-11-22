@@ -1,0 +1,22 @@
+<h1><%= @restaurant.name %></h1>
+
+<table>
+  <tr>
+    <th>Address:</th>
+    <td><%= @restaurant.address %></td>
+  </tr>
+  <tr>
+    <th>Opening Hours:</th>
+    <td><%= @restaurant.opening_hours%></td>
+  </tr>
+  <tr>
+    <th>Tel:</th>
+    <td><%= @restaurant.tel %></td>
+  </tr>
+  <tr>
+    <th>Description:</th>
+    <td><%= @restaurant.description %></td>
+  </tr>
+</table>
+
+<%= link_to "Back to index", admin_restaurants_path %>
