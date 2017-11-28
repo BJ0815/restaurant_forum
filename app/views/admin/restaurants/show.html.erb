@@ -1,27 +1,35 @@
-<h1><%= @restaurant.name %></h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
 
-<table>
-  <tr>
-    <th>Address:</th>
-    <td><%= @restaurant.address %></td>
-  </tr>
-  <tr>
-    <th>Opening Hours:</th>
-    <td><%= @restaurant.opening_hours%></td>
-  </tr>
-  <tr>
-    <th>Tel:</th>
-    <td><%= @restaurant.tel %></td>
-  </tr>
-  <tr>
-    <th>Photo:</th>
-    <td><%= image_tag @restaurant.image, width: '600px' %></td>
-  </tr>
-  <tr>
-    <th>Description:</th>
-    <td><%= @restaurant.description %></td>
-  </tr>
-</table>
+      <h1><%= @restaurant.name %></h1>
 
-<%= link_to "Back to index", admin_restaurants_path %>
+    </div>
 
+    <div class="col-md-4">
+      <%= image_tag @restaurant.image, class: "img-responsive center-block" %>
+
+      <br>
+
+      <div class="well">
+        <ul class="list-unstyled">
+          <li><strong>Address:</strong><%= @restaurant.address %></li>
+          <li><strong>Opening Hours:</strong><%= @restaurant.opening_hours %></li>
+          <li><strong>Tel:</strong><%= @restaurant.tel %></li>          
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <%= simple_format @restaurant.description %>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <hr>
+
+    <div class="text-right">
+      <%= link_to "Back to index", admin_restaurants_path, class: "btn btn-default" %>
+    </div>
+
+  </div>
+</div>
