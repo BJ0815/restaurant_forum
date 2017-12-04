@@ -3,6 +3,6 @@ class Restaurant < ApplicationRecord
   mount_uploader :image, PhotoUploader
 
   #關聯設定
-  belongs_to :category, optional: true
+  belongs_to :category
 
 end

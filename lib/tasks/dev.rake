@@ -7,7 +7,9 @@ namespace :dev do
         opening_hours: FFaker::Time.datetime,
         tel: FFaker::PhoneNumber.short_phone_number,
         address: FFaker::Address.street_address,
-        description: FFaker::Lorem.paragraph)
+        description: FFaker::Lorem.paragraph,
+        category: Category.all.sample
+        )
     end
     puts "have created fake restaurants"
     puts "how you have #{Restaurant.count} restaurants data"
