@@ -16,28 +16,33 @@
     <!-- 新增項目的表單 -->
     <%= form_for [:admin, @restaurant] do |f| %>
 
+      <div class="form-group">
+        <b><%= Category %></b>
+        <%= f.collection_select :category_id, Category.all, :id, :name, {prompt: true}, {class: "form-control"} %>
+      </div>
+
       <div class="form-group">      
-        <%= f.label :name, "Name" %>
+        <%= f.label :name, "Name" %><br />
         <%= f.text_field :name %>
       </div>
 
       <div class="form-group">
-        <%= f.label :tel, "Tel" %>
+        <%= f.label :tel, "Tel" %><br />
         <%= f.text_field :tel %>
       </div>
 
       <div class="form-group">
-        <%= f.label :address, "Address" %>
+        <%= f.label :address, "Address" %><br />
         <%= f.text_field :address %>
       </div>
 
       <div class="form-group">
-        <%= f.label :opening_hours, "Opening Hours" %>
+        <%= f.label :opening_hours, "Opening Hours" %><br />
         <%= f.text_field :opening_hours %>
       </div>
 
       <div class="form-group">
-        <%= f.label :description, "Description" %>
+        <%= f.label :description, "Description" %><br />
         <%= f.text_area :description %>
       </div>
 
