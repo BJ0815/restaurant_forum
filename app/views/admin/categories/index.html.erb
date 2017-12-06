@@ -12,6 +12,18 @@
       </div>
       <br />
 
+      <div class="form-inline">
+        <%= form_for [:admin, @category] do |c| %>
+          <div class="form-group">
+            <%= c.text_field :name, placeholder: "Category Name", class: "form-control" %>
+          </div>
+          <%= c.submit class: "btn btn-primary" %>
+        <% end %>
+      </div>
+      <br />
+        
+      </form>
+
       <table class="table table-striped table-bordered">
         <thead>
           <tr>
