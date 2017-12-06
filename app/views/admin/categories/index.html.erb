@@ -18,6 +18,9 @@
             <%= c.text_field :name, placeholder: "Category Name", class: "form-control" %>
           </div>
           <%= c.submit class: "btn btn-primary" %>
+          <% if @category.errors.any? %>
+            <%= @category.errors.full_messages.to_sentence %>
+          <% end %>
         <% end %>
       </div>
       <br />
