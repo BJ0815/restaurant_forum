@@ -15,6 +15,7 @@
             <thead>
               <tr>
                 <th>ID</th>
+                <th>Category</th>
                 <th>Name</th>
                 <th>#</th>
               </tr>
@@ -23,6 +24,7 @@
               <% @restaurants.each do |restaurant| %>
               <tr>
                 <th><%= restaurant.id %></th>
+                <td>[<%= restaurant.category.name %>]</td>
                 <td><%= restaurant.name %></td>
                 <td>
                   <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, admin_restaurant_path(restaurant), class: "btn btn-default" %>
