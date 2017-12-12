@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   #前台路由設定的餐廳資源(只限定開放閱覽功能)
   resources :restaurants, only: [:index, :show]
+  resources :categories, only: [:show]
   root "restaurants#index"
 
   #後台路由設定的餐廳資源(resources會開放7種action)
