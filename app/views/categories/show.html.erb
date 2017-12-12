@@ -1,0 +1,18 @@
+<div class="container">
+
+  <div class="row">
+
+    <ul class="nav nav-pills nav-pills-center">
+      <li role="presentation"><%= link_to "全部餐廳", root_path %></li>
+      <!-- 如果each拿出的分類資料(c)等於使用者選擇的分類(@category)，就回傳字串"active" -->
+      <% @categories.each do |c| %>
+      <li role="presentation" class="<%= "active" if c == @category %>"><%= link_to c.name, category_path(c) %></li>
+      <% end %>
+    </ul>
+
+    <br>
+
+
+    <%= render partial: "shared/restaurant_list" %>
+  </div>
+</div>
