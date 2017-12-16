@@ -4,5 +4,6 @@ class Restaurant < ApplicationRecord
 
   #關聯設定
   belongs_to :category
+  has_many :comments
 
 end

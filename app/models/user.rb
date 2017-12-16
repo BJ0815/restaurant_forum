@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  #關聯設定
+  has_many :comments
+
 
   def admin?
     self.role == "admin"
