@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   devise_for :users
 
   #前台路由設定的餐廳資源(只限定開放閱覽功能)
-  resources :restaurants, only: [:index, :show]
+  resources :restaurants, only: [:index, :show] do
+    resources :comments, only: [:create, :destroy]
+  end
+
   resources :categories, only: [:show]
   root "restaurants#index"
 
