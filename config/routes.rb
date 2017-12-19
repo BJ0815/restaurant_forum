@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   #Devise 自動建立認證使用者功能
   devise_for :users
 
+  #使用者profile頁面路由
+  resources :users, only: [:show, :edit, :update]
+
   #前台路由設定的餐廳資源(只限定開放閱覽功能)
   resources :restaurants, only: [:index, :show] do
     resources :comments, only: [:create, :destroy]
