@@ -7,6 +7,8 @@ class User < ApplicationRecord
   #關聯設定
   has_many :comments
 
+  mount_uploader :avatar, PhotoUploader
+
 
   def admin?
     self.role == "admin"
