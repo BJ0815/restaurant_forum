@@ -1,8 +1,11 @@
+<div class="container">
+  <div class="row">
+    <%= image_tag @user.avatar, width: '600px' %>
+    <%= @user.name %>
+    <%= @user.email %>
+    <%= @user.intro %>
 
-<%= image_tag @user.avatar, width: '600px' %>
-<%= @user.name %>
-<%= @user.email %>
-<%= @user.intro %>
 
-
-<%= link_to "Edit", edit_user_path(@user) %>
+    <%= link_to "Edit", edit_user_path(@user) %>
+  </div>
+</div>

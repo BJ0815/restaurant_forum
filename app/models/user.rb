@@ -7,6 +7,7 @@ class User < ApplicationRecord
   #關聯設定
   has_many :comments
 
+  #將PhotoUploader掛載上去，mount_uploader是carrierwave提供得掛載方法
   mount_uploader :avatar, PhotoUploader
 
 
