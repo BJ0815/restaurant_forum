@@ -16,7 +16,7 @@
         </div>
         <div class="form-group">
           <%= u.label :intro, "Intro" %>
-          <%= u.text_area :intro, class: "form-control" %>
+          <%= u.text_area :intro, class: "form-control", size: "20x10", resize: "none" %>
         </div>
         <div class="form-group">
           <%= u.label :avatar, "Avatar" %>
@@ -25,6 +25,7 @@
         </div>
         <div class="form-group">
           <%= u.submit class: "btn btn-primary" %>
+          <%= link_to 'Cancel', user_path(@user), class: "btn btn-default" %>
         </div>
       <% end %>
     </div>
