@@ -1,13 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
 
-  def show
-    #如果使用者資料未含名稱，直接跳往edit頁面進行設定
-    unless @user.name?
-      redirect_to edit_user_path(@user)
-    end
-  end
-
   def edit 
     unless @user == current_user
       redirect_to user_path(@user)
