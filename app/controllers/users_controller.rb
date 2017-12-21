@@ -8,6 +8,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit 
+    unless @user == current_user
+      redirect_to user_path(@user)
+    end
+  end
+
 
   def update
     if @user.update_attributes(user_params)
