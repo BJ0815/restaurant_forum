@@ -21,6 +21,15 @@
           <%= link_to "Edit", edit_user_path(@user), class: "btn btn-primary" %>
         <% end %>
       </div>
+      <hr>
+    </div>
+    <div class="col-md-12">
+      <% @commented_restaurants.each do |restaurant| %>
+        <%= link_to restaurant_path(restaurant) do %>
+          <%= image_tag restaurant.image, size: '180x150' %>
+          <%= restaurant.name %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
