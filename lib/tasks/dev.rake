@@ -3,7 +3,9 @@ namespace :dev do
     Restaurant.destroy_all
 
     500.times do |i|
-      Restaurant.create!(name: FFaker::Name.first_name,
+      Restaurant.create!(
+        remote_image_url: 'http://via.placeholder.com/600x300',
+        name: FFaker::Name.first_name,
         opening_hours: FFaker::Time.datetime,
         tel: FFaker::PhoneNumber.short_phone_number,
         address: FFaker::Address.street_address,
