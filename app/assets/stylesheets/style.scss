@@ -29,3 +29,14 @@
   float: none;
   display: inline-block;
 }
+
+.my-restaurant {
+  display: inline-block;
+  text-align: center;
+  padding: 10px 10px;
+}
+
+.my-restaurant:hover {
+  background-color: #eee;
+}
+
