@@ -21,7 +21,7 @@ namespace :dev do
 
     20.times do |i|
       User.create!(
-        name: FFaker::Name.male_name_with_prefix,
+        name: FFaker::Name.first_name,
         email: FFaker::Internet.email,
         password: FFaker::Internet.password
         )
