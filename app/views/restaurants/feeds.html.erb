@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+
+    <ul class="nav nav-tabs">
+      <li role="presentation"><%= link_to "首頁", root_path %></li>
+      <li role="presentation" class="active"><%= link_to "最新動態", feeds_restaurants_path %>
+      </li>
+    </ul>
+    <br>
+
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">最新動態</div>
+        <div class="panel-body">
+          <% @recent_restaurants.each do |r| %>
+            <h4><%= link_to r.name, restaurant_path(r) %></h4>
+            <em><%= r.category.name %></em>
+            <p><%= r.description %></p>
+            <hr>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">最新評論</div>
+        <div class="panel-body">
+          <% @recent_comments.each do |c| %>
+            <h4><%= link_to c.restaurant.name, restaurant_path(c.restaurant) %></h4>
+            <em>by <%= link_to c.user.name, user_path(c.user) %></em>
+            <p><%= truncate(c.content, length: 90) %></p>
+            <hr>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
