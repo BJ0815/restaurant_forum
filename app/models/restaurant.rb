@@ -4,6 +4,7 @@ class Restaurant < ApplicationRecord
 
   #關聯設定
   belongs_to :category
-  has_many :comments
+  #當 Restaurant 物件被刪除時,一併刪除依賴的 Comment
+  has_many :comments, dependent: :destroy
 
 end

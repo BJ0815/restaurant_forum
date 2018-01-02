@@ -7,7 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   #關聯設定(與comments一對多關係及與restaurants多對多關係)
-  has_many :comments
+  has_many :comments, dependent: :restrict_with_error
   has_many :restaurants, through: :comments
 
   #將PhotoUploader掛載上去，mount_uploader是carrierwave提供得掛載方法
