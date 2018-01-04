@@ -9,14 +9,20 @@ Rails.application.routes.draw do
   resources :restaurants, only: [:index, :show] do
     resources :comments, only: [:create, :destroy]
 
-    #瀏覽所有餐廳的最新動態
+    #集合路由(群集)
     collection do
+      #瀏覽所有餐廳最新動態
       get :feeds
     end
 
-    #瀏覽個別餐廳的 Dashboard
+    #成員路由(特定元素)
     member do
+      #瀏覽個別餐廳的Dashboard
       get :dashboard
+
+      #收藏/取消收藏
+      post :favorite
+      post :unfavorite
     end
 
   end
