@@ -32,6 +32,7 @@ class RestaurantsController < ApplicationController
     favorite.destroy_all
     redirect_back(fallback_location: root_path)
   end
-  
+
+
 
 end
