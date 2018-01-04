@@ -9,6 +9,7 @@
         <hr>
         <p><%= truncate(r.description, length: 80) %></p>
         <%= render partial: "shared/favorite", locals: {object: r} %>
+        <%= render partial: "shared/like", locals: {object: r} %>
       </div>
     </div>
   </div>
