@@ -48,5 +48,9 @@ class RestaurantsController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
 
+  def ranks
+    @rank_restaurants = Restaurant.order(restaurant_count: :desc).limit(10)
+  end
+
 
 end
