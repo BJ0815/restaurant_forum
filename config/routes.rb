@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     collection do
       #瀏覽所有餐廳最新動態
       get :feeds
+      get :ranks
     end
 
     #成員路由(特定元素)
