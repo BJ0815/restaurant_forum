@@ -1,7 +1,13 @@
 <% @users.each do |user| %>
   <%= user.name %>
-  <!-- 會用 POST 動作導向 http://localhost:3000/followships?following_id={user.id} -->
-  <%= link_to "follow", followships_path(following_id: user), method: :post %>
-  <!-- 會用 DELETE 動作導向 http://localhost:3000/followships/{user.id} -->
-  <%= link_to "unfollow", followship_path(user), method: :delete %>
+
+  <% if current_user != user %>
+    <% if current_user.following?(user) %>
+      <!-- 會用 DELETE 動作導向 http://localhost:3000/followships/{user.id} -->
+      <%= link_to "unfollow", followship_path(user), method: :delete %>
+    <% else %>
+      <!-- 會用 POST 動作導向 http://localhost:3000/followships?following_id={user.id} -->
+      <%= link_to "follow", followships_path(following_id: user), method: :post %>
+    <% end %>
+  <% end %>
 <% end %>
