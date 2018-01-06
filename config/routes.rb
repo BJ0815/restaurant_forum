@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   devise_for :users
 
   #使用者profile頁面路由
-  resources :users, only: [:show, :edit, :update]
-
+  resources :users, only: [:index, :show, :edit, :update]
+  #使用者追蹤使用者
+  resources :followships, only: [:create, :destroy]
+  
   #前台路由設定的餐廳資源(只限定開放閱覽功能)
   resources :restaurants, only: [:index, :show] do
     resources :comments, only: [:create, :destroy]

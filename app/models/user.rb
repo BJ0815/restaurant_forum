@@ -21,7 +21,8 @@ class User < ApplicationRecord
   #將PhotoUploader掛載上去，mount_uploader是carrierwave提供得掛載方法
   mount_uploader :avatar, PhotoUploader
 
-  #[追蹤關係]的關聯設定
+  # 「使用者追蹤使用者」的 self-referential relationships 設定
+  # 不需要另加 source，Rails 可從 Followship Model 設定來判斷 followings 指向 User Model
   has_many :followships, dependent: :destroy
   has_many :followings, through: :followships 
 
