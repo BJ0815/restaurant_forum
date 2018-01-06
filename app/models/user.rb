@@ -21,6 +21,10 @@ class User < ApplicationRecord
   #將PhotoUploader掛載上去，mount_uploader是carrierwave提供得掛載方法
   mount_uploader :avatar, PhotoUploader
 
+  #[追蹤關係]的關聯設定
+  has_many :followships, dependent: :destroy
+  has_many :followings, through: :followships 
+
 
   def admin?
     self.role == "admin"
