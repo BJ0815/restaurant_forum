@@ -1,13 +1,7 @@
 <div class="container">
   <div class="row">
 
-    <ul class="nav nav-tabs">
-      <li role="presentation"><%= link_to "首頁", root_path %></li>
-      <li role="presentation" class="active"><%= link_to "最新動態", feeds_restaurants_path %>
-      </li>
-      <li role="presentation"><%= link_to "TOP10 人氣餐廳", ranks_restaurants_path %></li>
-      <li role="presentation"><%= link_to "美食達人", users_path %></li>
-    </ul>
+    <%= render partial: "shared/nav_tabs" %>
     <br>
 
     <div class="col-md-6">
