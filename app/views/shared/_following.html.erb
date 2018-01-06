@@ -1,9 +1,9 @@
 <% if current_user != object %>
   <% if current_user.following?(object) %>
     <!-- 會用 DELETE 動作導向 http://localhost:3000/followships/{user.id} -->
-    <%= link_to "unfollow", followship_path(object), method: :delete %>
+    <%= link_to "unfollow", followship_path(object), method: :delete, class: "btn btn-info" %>
   <% else %>
     <!-- 會用 POST 動作導向 http://localhost:3000/followships?following_id={user.id} -->
-    <%= link_to "follow", followships_path(following_id: object), method: :post %>
+    <%= link_to "follow", followships_path(following_id: object), method: :post, class: "btn btn-primary" %>
   <% end %>
 <% end %>

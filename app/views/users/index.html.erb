@@ -1,5 +1,37 @@
-<% @users.each do |user| %>
-  <%= user.name %>
+<div class="container">
+  <div class="row">
 
-  <%= render partial: "shared/following", locals: { object: user }%>
-<% end %>
+    <ul class="nav nav-tabs">
+      <li role="presentation"><%= link_to "首頁", root_path %></li>
+      <li role="presentation"><%= link_to "最新動態", feeds_restaurants_path %></li>
+      <li role="presentation"><%= link_to "TOP10 人氣餐廳", ranks_restaurants_path %></li>
+      <li role="presentation" class="active"><%= link_to "美食達人", followships_path %></li>
+    </ul>
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-12">
+      <div>
+        <h1>美食達人</h1>
+      </div>
+      <hr>
+
+      <% @users.each do |user| %>
+        <div class="col-md-3 text-center user-item">
+          <%= link_to user_path(user) do%>
+            <% if user.avatar.blank? %>
+              <img src="http://via.placeholder.com/140x120">
+            <% else %>
+              <%= image_tag user.avatar, class: "img-rounded" %>
+            <% end %>
+            <h4><%= user.name %></h4>
+          <% end %>
+
+          <%= render partial: "shared/following", locals: { object: user }%>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
