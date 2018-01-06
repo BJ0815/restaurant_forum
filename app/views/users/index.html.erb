@@ -1,4 +1,5 @@
 <% @users.each do |user| %>
   <%= user.name %>
+  <!-- 會用 POST 動作導向 http://localhost:3000/followships?following_id={user.id} -->
   <%= link_to "follow", followships_path(following_id: user), method: :post %>
 <% end %>
