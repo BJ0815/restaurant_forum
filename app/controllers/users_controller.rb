@@ -2,7 +2,8 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
 
   def index
-    @users = User.all
+    #只顯示除了自己之外的美食達人
+    @users = User.where("id != ?", current_user)
   end
 
   def show
