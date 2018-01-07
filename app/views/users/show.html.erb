@@ -10,6 +10,12 @@
       <div class="page-header text-center">
         <h1 style="margin-bottom: 30px"><%= @user.name %></h1>
         <p style="margin-bottom: 30px"><%= @user.email %></p>
+        <p>
+          <%= @commented_restaurants.count %>已評論餐廳
+          <%= @favorited_restaurants.count %>已收藏餐廳
+          <%= @followings.count %>followings
+          <%= @followers.count %>followers
+        </p>
         <div class="well">
           <%= simple_format @user.intro %>
         </div>
