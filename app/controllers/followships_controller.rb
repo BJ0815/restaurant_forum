@@ -17,8 +17,8 @@ class FollowshipsController < ApplicationController
 
   def destroy
     # where 會回傳物件集合(Array)，需要串接可取出單一物件的方法如 first
-    @followship = current_user.followships.where(following_id: params[:id]).first
-    @followship.destroy
+    @followship = current_user.followships.where(following_id: params[:id])
+    @followship.destroy_all
     flash[:notice] = "已取消追蹤"
     redirect_back(fallback_location: root_path)
   end
