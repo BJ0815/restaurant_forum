@@ -77,6 +77,13 @@
             </li>
           <% end %>
         </ul>
+      </div>
+      <div>
+        <% @user.applys.each do |apply| %>
+          <%= apply.name %>
+          <%= link_to "accept", friendship_path(apply), method: :patch %>
+          <%= link_to "cancel", friendship_path(apply), method: :delete %>
+        <% end %>
       </div>      
     </div>
     <div class="col-md-8">

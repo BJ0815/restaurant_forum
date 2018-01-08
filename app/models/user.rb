@@ -35,7 +35,7 @@ class User < ApplicationRecord
   # 「使用者的好友」的設定
   has_many :friendships, dependent: :destroy
   has_many :friends, -> { where(friendships: {status: "accepted"})}, through: :friendships
-  has_many :applys, -> { where(friendships: {status: "applying"})}, through: :friendship, source: "User"
+  has_many :applys, -> { where(friendships: {status: "applying"})}, through: :friendships, source: "friend"
 
   #「把使用者加入好友的其他人」的設定
   has_many :inverse_friendships, class_name: "Friendship", foreign_key: "friend_id"
