@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :followships, only: [:create, :destroy]
 
   #使用者的好友
-  resources :friendships, only: [:create, :destroy]
+  resources :friendships, only: [:create, :update, :destroy]
   
   #前台路由設定的餐廳資源(只限定開放閱覽功能)
   resources :restaurants, only: [:index, :show] do
