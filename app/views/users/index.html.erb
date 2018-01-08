@@ -25,6 +25,7 @@
           <% end %>
 
           <%= render partial: "shared/following", locals: { object: user }%>
+          <%= link_to "friend", friendships_path(user), class: "btn btn-primary" %>
         </div>
       <% end %>
 
