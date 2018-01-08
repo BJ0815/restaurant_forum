@@ -38,8 +38,8 @@
           <% @followings.each do |f| %>
             <li class="list-group-item">
               <%= link_to user_path(f) do %>
-                <%= image_tag f.avatar, class: "img-circle" %>
-                <%= f.name %>
+              <%= image_tag f.avatar, class: "img-circle", size: "40" %>
+              <%= f.name %>
               <% end %>
             </li>
           <% end %>
@@ -60,6 +60,23 @@
             </li>
           <% end %>          
         </ul>       
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-title"><strong><%= @user.all_friends.count %> 好友</strong>
+          </div>
+        </div>
+        <ul class="list-group">
+          <% @user.all_friends.each do |friend| %>
+            <li class="list-group-item">
+              <%= link_to user_path(friend) do %>
+              <%= image_tag friend.avatar, size: "40", class: "img-circle" %>
+              <%= friend.name %>
+              <%end %>
+            </li>
+          <% end %>
+        </ul>
       </div>      
     </div>
     <div class="col-md-8">
