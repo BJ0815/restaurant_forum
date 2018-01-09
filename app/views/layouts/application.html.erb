@@ -31,6 +31,39 @@
               <% end %>
               <li><p class="navbar-text">[ <%= current_user.name %> ]</p></li>
               <li><%= link_to "Profile", user_path(current_user) %></li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="dropdown-header">交友邀請</li>
+                  <% current_user.apply_friends.each do |friend| %>
+                  <li>
+                    <%= link_to user_path(friend) do %>
+                      <%= image_tag friend.avatar, size: "20", class: "img-circle" %>
+                      <%= friend.name %>
+                    <% end %>
+                    <%= link_to "接受", friendship_path(friend), method: :patch, class: "btn btn-default" %>
+                    <%= link_to "刪除邀請", friendship_path(friend), method: :delete, class: "btn btn-default" %>
+                  </li>
+                  <% end %> 
+                  <li class="divider"></li>
+                  <li class="dropdown-header">等待好友邀請接受</li>
+                  <% current_user.applys.each do |user| %>
+                  <li>
+                    
+                      <%= link_to user_path(user), class: "float-left"  do %>
+                        <%= image_tag user.avatar, size: "20", class: "img-circle" %>
+                        <%= user.name %>
+                      <% end %>
+                  
+                    
+                    <%= link_to friendship_path(user), method: :delete, class: "text-right" do %>
+                    <span class="glyphicon glyphicon-remove"></span>
+                    <% end %>                          
+                  </li>
+                  <% end %>
+                </ul>
+              </li>
               <li><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
               <li><%= link_to('修改密碼', edit_user_registration_path) %></li>
             <% else %>

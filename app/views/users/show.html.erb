@@ -8,7 +8,9 @@
       <hr>
 
       <div class="page-header text-center">
-        <h1 style="margin-bottom: 30px"><%= @user.name %></h1>
+        <h1 style="margin-bottom: 30px">
+          <%= @user.name %>
+        </h1>
         <p style="margin-bottom: 30px"><%= @user.email %></p>
         <h4>
           <span class="label label-default">已評論餐廳： <%= @commented_restaurants.count %></span>
@@ -77,14 +79,7 @@
             </li>
           <% end %>
         </ul>
-      </div>
-      <div>
-        <% @user.applys.each do |apply| %>
-          <%= apply.name %>
-          <%= link_to "accept", friendship_path(apply), method: :patch %>
-          <%= link_to "cancel", friendship_path(apply), method: :delete %>
-        <% end %>
-      </div>      
+      </div>     
     </div>
     <div class="col-md-8">
       <div class="panel panel-default">

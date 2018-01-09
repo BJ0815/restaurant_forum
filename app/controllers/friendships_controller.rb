@@ -5,14 +5,14 @@ class FriendshipsController < ApplicationController
     if @friendship.save
       flash[:notice] = "成功申請好友，等待確認！"
     else
-      flash[:alert] = @friend.errors.full_messages.to_sentence
+      flash[:alert] = @friendship.errors.full_messages.to_sentence
     end
 
     redirect_back(fallback_location: root_path)
   end
 
   def update
-    @friendship = current_user.friendships.where(friend_id: current_user, user_id: params[:id], status: "applying")
+    @friendship = current_user.inverse_friendships.where(user_id: params[:id], status: "applying").first
     if @friendship.update(status: "accepted")
       flash[:notice] = "成功接受成為好友！"
     else
@@ -24,9 +24,22 @@ class FriendshipsController < ApplicationController
     
 
   def destroy
-    @friendship = current_user.friendships.where(friend_id: params[:id], status: "applying")
-    @friendship.destroy_all
-    flash[:notice] = "已取消好友"
+    if current_user.friendships.where(friend_id: params[:id], status: "applying").present?
+      @friendship = current_user.friendships.where(friend_id: params[:id], status: "applying")
+      @friendship.destroy_all
+      flash[:notice] = "已取消好友申請"
+    elsif current_user.friendships.where(friend_id: params[:id], status: "accepted").present?      
+      @friendship = current_user.friendships.where(friend_id: params[:id], status: "accepted")
+      @inverse_friendship = current_user.inverse_friendships.where(user_id: params[:id], status: "accepted")
+      @friendship.destroy_all
+      @inverse_friendship.destroy_all
+      flash[:notice] = "成功刪除好友"
+    elsif current_user.inverse_friendships.where(user_id: params[:id]).present?
+      @friendship = current_user.inverse_friendships.where(user_id: params[:id], status: "applying")
+      @friendship.destroy_all
+      flash[:notice] = "拒絕成為好友"
+    end
+
     redirect_back(fallback_location: root_path)
   end
 

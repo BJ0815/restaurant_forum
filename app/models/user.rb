@@ -35,11 +35,12 @@ class User < ApplicationRecord
   # 「使用者的好友」的設定
   has_many :friendships, dependent: :destroy
   has_many :friends, -> { where(friendships: {status: "accepted"})}, through: :friendships
-  has_many :applys, -> { where(friendships: {status: "applying"})}, through: :friendships, source: "friend"
+  has_many :applys, -> { where(friendships: {status: "applying"})}, through: :friendships, source: :friend
 
   #「把使用者加入好友的其他人」的設定
-  has_many :inverse_friendships, class_name: "Friendship", foreign_key: "friend_id"
-  has_many :be_friends, through: :inverse_friendships, source: "User"
+  has_many :inverse_friendships, class_name: "Friendship", foreign_key: "friend_id", dependent: :destroy
+  has_many :be_friends, -> { where(friendships: {status: "accepted"})}, through: :inverse_friendships, source: :user
+  has_many :apply_friends, -> { where(friendships: {status: "applying"})}, through: :inverse_friendships, source: :user
 
 
   def admin?
@@ -54,12 +55,20 @@ class User < ApplicationRecord
     self.followings.include?(user)
   end
 
-  def friend?(friend)
-    self.friends.include?(friend)
+  def friend?(user)
+    self.friends.include?(user) || self.be_friends.include?(user)
+  end
+
+  def applying?(user)
+    self.applys.include?(user)
+  end
+
+  def accepted?(user)
+    self.apply_friends.include?(user)
   end
 
   def all_friends
-    self.friends.all
+    self.friends + self.be_friends
   end
   
 end
