@@ -28,13 +28,11 @@ class FriendshipsController < ApplicationController
       @friendship = current_user.friendships.where(friend_id: params[:id], status: "applying")
       @friendship.destroy_all
       flash[:notice] = "已取消好友申請"
-    elsif current_user.friendships.where(friend_id: params[:id], status: "accepted").present?      
+    elsif current_user.friendships.where(friend_id: params[:id]).present?      
       @friendship = current_user.friendships.where(friend_id: params[:id], status: "accepted")
-      @inverse_friendship = current_user.inverse_friendships.where(user_id: params[:id], status: "accepted")
       @friendship.destroy_all
-      @inverse_friendship.destroy_all
       flash[:notice] = "成功刪除好友"
-    elsif current_user.inverse_friendships.where(user_id: params[:id]).present?
+    elsif current_user.inverse_friendships.where(user_id: params[:id], status: "applying").present?
       @friendship = current_user.inverse_friendships.where(user_id: params[:id], status: "applying")
       @friendship.destroy_all
       flash[:notice] = "拒絕成為好友"

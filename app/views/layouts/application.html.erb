@@ -37,7 +37,7 @@
                 <ul class="dropdown-menu">
                   <li class="dropdown-header">交友邀請</li>
                   <% current_user.apply_friends.each do |friend| %>
-                  <li>
+                  <li class="dropdown-item">
                     <%= link_to user_path(friend) do %>
                       <%= image_tag friend.avatar, size: "20", class: "img-circle" %>
                       <%= friend.name %>
@@ -49,16 +49,14 @@
                   <li class="divider"></li>
                   <li class="dropdown-header">等待好友邀請接受</li>
                   <% current_user.applys.each do |user| %>
-                  <li>
-                    
-                      <%= link_to user_path(user), class: "float-left"  do %>
-                        <%= image_tag user.avatar, size: "20", class: "img-circle" %>
-                        <%= user.name %>
-                      <% end %>
-                  
+                  <li class="dropdown-item">
                     
                     <%= link_to friendship_path(user), method: :delete, class: "text-right" do %>
                     <span class="glyphicon glyphicon-remove"></span>
+                    <% end %>
+                    <%= link_to user_path(user), class: "float-left"  do %>
+                      <%= image_tag user.avatar, size: "20", class: "img-circle" %>
+                      <%= user.name %>
                     <% end %>                          
                   </li>
                   <% end %>
